@@ -17,11 +17,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import MenuListItems from "../components/MenuListItems";
-import { blueGrey } from "@mui/material/colors";
-
+import { blueGrey, orange, purple } from "@mui/material/colors";
+import { useSelector } from "react-redux";
+import useAuthCalls from "../hooks/useAuthCalls";
+import { Button } from "@mui/material";
 const drawerWidth = 190;
 
 function Dashboard(props) {
+  const { currentUser, error } = useSelector((state) => state.auth);
+  const { logout } = useAuthCalls();
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -60,9 +65,14 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Stock App
           </Typography>
+          {currentUser && (
+            <Button color="inherit" onClick={() => logout()}>
+              Logout
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
       <Box
@@ -88,7 +98,7 @@ function Dashboard(props) {
           }}
           PaperProps={{
             sx: {
-              backgroundColor: blueGrey[900],
+              backgroundColor: purple[500],
             },
           }}
         >
@@ -105,7 +115,7 @@ function Dashboard(props) {
           }}
           PaperProps={{
             sx: {
-              backgroundColor: blueGrey[900],
+              backgroundColor: orange[500],
             },
           }}
           open
