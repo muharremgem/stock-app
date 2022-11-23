@@ -16,7 +16,7 @@ const icons = [
   {
     icon: <DashboardIcon />,
     title: "Dashboard",
-    url: "/stock",
+    url: "/stock/",
   },
   {
     title: "Purchase",
@@ -59,17 +59,15 @@ const iconStyle = {
 
 const MenuListItems = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div>
       <List>
-        {[].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {icons?.map((item, index) => (
+          <ListItem key={index} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
