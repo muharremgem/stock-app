@@ -51,7 +51,7 @@ const icons = [
 ];
 
 const iconStyle = {
-  color: "#eee",
+  color: "#black",
   "& .MuiSvgIcon-root": { color: "#eee" },
   "&:hover": { color: "red" },
   "&:hover .MuiSvgIcon-root": { color: "red" },
