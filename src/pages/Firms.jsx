@@ -47,7 +47,7 @@ const Firms = () => {
         <Grid container justifyContent="center" gap={3}>
           {firms?.map((firm) => (
             <Grid item>
-              <FirmCard key={firm.id} firm={firm} />
+              <FirmCard key={firm?.id} firm={firm} />
             </Grid>
           ))}
         </Grid>
