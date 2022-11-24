@@ -45,7 +45,13 @@ const Firms = () => {
         Firms
       </Typography>
 
-      <Button variant="contained" onClick={() => setOpen(true)}>
+      <Button
+        variant="contained"
+        onClick={() => {
+          setOpen(true);
+          setInfo({});
+        }}
+      >
         New Firm
       </Button>
 
