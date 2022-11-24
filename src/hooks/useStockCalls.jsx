@@ -23,6 +23,7 @@ const useStockCalls = () => {
 
   const getFirms = async () => getStockData("firms");
   const getSales = async () => getStockData("sales");
+  const getBrands = async () => getStockData("brands");
 
   //! ------Delete Calls-----
 
@@ -38,6 +39,7 @@ const useStockCalls = () => {
   };
 
   const deleteFirm = (id) => deleteStockData("firms", id);
+  const deleteBrands = (id) => deleteStockData("brands", id);
 
   //! ----- Post Call ----------
   const postStockData = async (info, url) => {
@@ -52,6 +54,7 @@ const useStockCalls = () => {
   };
 
   const postFirm = (info) => postStockData(info, "firms");
+  const postBrands = (info) => postStockData(info, "brands");
 
   //! ----- Put Call ----------
   const putStockData = async (info, url) => {
@@ -61,11 +64,12 @@ const useStockCalls = () => {
       getStockData(url);
     } catch (error) {
       console.log(error);
-      toastErrorNotify(`${url} can not be updated`);
+      toastErrorNotify(`${url} can not be uptaded`);
     }
   };
 
   const putFirm = (info) => putStockData(info, "firms");
+  const putBrands = (info) => putStockData(info, "brands");
 
   return {
     getStockData,
@@ -76,6 +80,10 @@ const useStockCalls = () => {
     postStockData,
     putFirm,
     putStockData,
+    getBrands,
+    putBrands,
+    postBrands,
+    deleteBrands,
   };
 };
 
