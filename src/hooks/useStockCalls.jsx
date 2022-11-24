@@ -19,7 +19,7 @@ const useStockCalls = () => {
 
   const getFirms = async () => getStockData("firms");
   const getSales = async () => getStockData("sales");
-  const getFirms = async () => getStockData("firms");
+
 
   return { getFirms, getSales };
 };
