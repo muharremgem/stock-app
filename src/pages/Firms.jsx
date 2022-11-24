@@ -13,12 +13,7 @@ const Firms = () => {
   const { getFirms } = useStockCalls();
   const { firms } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
-  const [info, setInfo] = useState({
-    name: "",
-    phone: "",
-    address: "",
-    image: "",
-  });
+  const [info, setInfo] = useState({});
 
   // const dispatch = useDispatch();
   // const { token } = useSelector((state) => state.auth);
@@ -58,8 +53,8 @@ const Firms = () => {
       {firms?.length > 0 && (
         <Grid container justifyContent="center" gap={3}>
           {firms?.map((firm) => (
-            <Grid item>
-              <FirmCard key={firm?.id} firm={firm} />
+            <Grid item key={firm?.id}>
+              <FirmCard firm={firm} setOpen={setOpen} setInfo={setInfo} />
             </Grid>
           ))}
         </Grid>
