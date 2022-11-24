@@ -54,7 +54,7 @@ const Firms = () => {
         New Firm
       </Button>
 
-      <FirmModal open={open} setOpen={setOpen} />
+      <FirmModal open={open} setOpen={setOpen} info={info} setInfo={setInfo} />
       {firms?.length > 0 && (
         <Grid container justifyContent="center" gap={3}>
           {firms?.map((firm) => (
