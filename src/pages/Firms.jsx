@@ -12,6 +12,7 @@ const Firms = () => {
           Authorization: `Token ${token}`,
         },
       });
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
