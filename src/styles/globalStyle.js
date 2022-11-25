@@ -20,3 +20,10 @@ export const flexCenter = {
   flexDirection: "column",
   gap: 2,
 };
+
+export const flexColumn = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  gap: 2,
+};

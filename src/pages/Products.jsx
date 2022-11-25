@@ -37,7 +37,7 @@ const Products = () => {
       {/* <ProductModal open={open} setOpen={setOpen} info={info} setInfo={setInfo} /> */}
 
       {products?.length > 0 && (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ mt: 5 }} elevation={12}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>

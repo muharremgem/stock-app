@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import { btnHoverStyle } from "../styles/globalStyle";
+import { btnHoverStyle, flexColumn } from "../styles/globalStyle";
 import useStockCalls from "../hooks/useStockCalls";
 import { CardHeader } from "@mui/material";
 
@@ -35,7 +35,7 @@ export default function BrandsCard({ brand, setOpen, setInfo }) {
         alt="green iguana"
       />
 
-      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+      <CardActions sx={flexColumn}>
         <EditIcon
           sx={btnHoverStyle}
           onClick={() => {
