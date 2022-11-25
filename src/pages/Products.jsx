@@ -50,11 +50,11 @@ const Products = () => {
     products,
     columnObj
   );
-
   //? Verilen item secilen brand'larin icerisinde varsa true dondurur
   //? VEYA hic brand secilmemisse true dondurur.aksinde false dondurur.
   //? bu fonksiyon filter() icerisinde yazilacagi icin false dondurmesi
   //? durumunda filter bir suzme yapmamis olur.
+
   const isBrandSelected = (item) =>
     selectedBrands.includes(item.brand) || selectedBrands.length === 0;
 
@@ -62,6 +62,7 @@ const Products = () => {
     selectedProducts.includes(item.name) || selectedProducts.length === 0;
 
   //? products dizisinden secilmis brand'larin product name'lerini bir diziye saklar
+
   const filtredProducts = products
     ?.filter((item) => selectedBrands?.includes(item.brand))
     .map((item) => item.name);
