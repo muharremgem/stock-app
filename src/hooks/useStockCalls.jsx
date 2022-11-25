@@ -1,6 +1,11 @@
 import { axiosWithToken } from "../service/axiosInstance";
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice";
+import {
+  fetchFail,
+  fetchStart,
+  getSuccess,
+  getProCatBrandsSuccess,
+} from "../features/stockSlice";
 import useAxios from "./useAxios";
 import { toastSuccessNotify, toastErrorNotify } from "../helper/ToastNotify";
 
@@ -27,6 +32,23 @@ const useStockCalls = () => {
   const getCategories = async () => getStockData("categories");
   const getProducts = async () => getStockData("products");
 
+  const getProCatBrands = async () => {
+    dispatch(fetchStart);
+    try {
+      const [products, categories, brands] = await Promise.all(
+        [axiosWithToken.get("stock/products/")],
+        [axiosWithToken.get("stock/categories/")],
+        [axiosWithToken.get("stock/brands/")]
+      );
+      dispatch(
+        getProCatBrandsSuccess([products.data, categories.data, brands.data])
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
   //! ------Delete Calls-----
 
   const deleteStockData = async (url, id) => {
@@ -42,6 +64,7 @@ const useStockCalls = () => {
 
   const deleteFirm = (id) => deleteStockData("firms", id);
   const deleteBrands = (id) => deleteStockData("brands", id);
+  const deleteProduct = (id) => deleteStockData("products", id);
 
   //! ----- Post Call ----------
   const postStockData = async (info, url) => {
@@ -77,7 +100,11 @@ const useStockCalls = () => {
     getStockData,
     getFirms,
     getSales,
+    getCategories,
+    getProducts,
     deleteFirm,
+    deleteBrands,
+    deleteProduct,
     postFirm,
     postStockData,
     putFirm,
@@ -85,9 +112,8 @@ const useStockCalls = () => {
     getBrands,
     putBrands,
     postBrands,
-    deleteBrands,
-    getCategories,
-    getProducts,
+    getProCatBrands,
+    getProCatBrandsSuccess,
   };
 };
 
