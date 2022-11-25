@@ -10,8 +10,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { btnHoverStyle } from "../styles/globalStyle";
 
-const Firms = () => {
+const Products = () => {
   const { getBrands, getCategories, getProducts } = useStockCalls();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
@@ -39,26 +41,30 @@ const Firms = () => {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell align="right">Calories</TableCell>
-                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                <TableCell>#</TableCell>
+                <TableCell align="center">Category</TableCell>
+                <TableCell align="center">Brands</TableCell>
+                <TableCell align="center">Name</TableCell>
+                <TableCell align="center">Stock</TableCell>
+                <TableCell align="center">Operation</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {products.map((row) => (
+              {products?.map((product, index) => (
                 <TableRow
-                  key={row.name}
+                  key={product.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    {index + 1}
                   </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
+                  <TableCell align="center">{product.category}</TableCell>
+                  <TableCell align="center">{product.brand}</TableCell>
+                  <TableCell align="center">{product.name}</TableCell>
+                  <TableCell align="center">{product.stock}</TableCell>
+                  <TableCell align="center">
+                    <DeleteIcon sx={btnHoverStyle} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -69,4 +75,4 @@ const Firms = () => {
   );
 };
 
-export default Firms;
+export default Products;
