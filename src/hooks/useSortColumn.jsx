@@ -6,7 +6,7 @@ const useSortColumn = (data, columnObj) => {
   const [sortedData, setSortedData] = useState(data);
   const [columns, setColumns] = useState(columnObj);
 
-  // //! product state'i her guncellendiginde local state'i de guncelle
+  // //! product state'i her guncellendiginde local state'i de guncelle...
   useEffect(() => {
     setSortedData(data);
   }, [data]);
