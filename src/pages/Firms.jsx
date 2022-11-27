@@ -14,7 +14,7 @@ const Firms = () => {
   const { firms } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState({});
-
+// Daha kısa bir yöntem ile değiştirildi.
   // const dispatch = useDispatch();
   // const { token } = useSelector((state) => state.auth);
   // const BASE_URL = "https://13671.fullstack.clarusway.com/";
