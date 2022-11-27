@@ -49,7 +49,7 @@ const useStockCalls = () => {
     }
   };
 
-  //! ------Delete Calls-----
+  //! ------Delete Calls---
 
   const deleteStockData = async (url, id) => {
     try {
