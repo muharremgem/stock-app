@@ -21,7 +21,7 @@ const Charts = () => {
   return (
     <Grid container justifyContent="center" spacing={2} mt={3}>
       <Grid item xs={12} sm={12} md={6}>
-        <Card sx={{ p: 3 }}>
+        <Card sx={{ p: 2 }}>
           <Typography>Daily Sales (USD)</Typography>
           <LineChart
             data={salesData}
@@ -34,7 +34,7 @@ const Charts = () => {
         </Card>
       </Grid>
       <Grid item xs={12} sm={12} md={6}>
-        <Card sx={{ p: 3 }}>
+        <Card sx={{ p: 2 }}>
           <Typography>Daily Purchases (USD)</Typography>
           <LineChart
             data={purchasesData}
@@ -43,7 +43,6 @@ const Charts = () => {
             colors={["blue"]}
             valueFormatter={dataFormatter}
             marginTop="mt-6"
-            yAxisWidth="w-10"
           />
         </Card>
       </Grid>
