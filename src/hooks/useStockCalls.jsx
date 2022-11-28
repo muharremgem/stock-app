@@ -26,20 +26,20 @@ const useStockCalls = () => {
     }
   };
 
-  const getFirms = async () => getStockData("firms");
-  const getSales = async () => getStockData("sales");
-  const getBrands = async () => getStockData("brands");
-  const getCategories = async () => getStockData("categories");
-  const getProducts = async () => getStockData("products");
+  const getFirms = () => getStockData("firms");
+  const getSales = () => getStockData("sales");
+  const getBrands = () => getStockData("brands");
+  const getCategories = () => getStockData("categories");
+  const getProducts = () => getStockData("products");
 
   const getProCatBrands = async () => {
-    dispatch(fetchStart);
+    dispatch(fetchStart());
     try {
-      const [products, categories, brands] = await Promise.all(
-        [axiosWithToken.get("stock/products/")],
-        [axiosWithToken.get("stock/categories/")],
-        [axiosWithToken.get("stock/brands/")]
-      );
+      const [products, categories, brands] = await Promise.all([
+        axiosWithToken.get("stock/products/"),
+        axiosWithToken.get("stock/categories/"),
+        axiosWithToken.get("stock/brands/"),
+      ]);
       dispatch(
         getProCatBrandsSuccess([products.data, categories.data, brands.data])
       );

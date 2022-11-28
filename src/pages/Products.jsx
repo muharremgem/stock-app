@@ -103,7 +103,7 @@ const Products = () => {
   //       })
   //   );
   // };
-  console.log(selectedBrands);
+  //console.log(selectedBrands);
 
   return (
     <Box>
