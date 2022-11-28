@@ -10,12 +10,12 @@ const Charts = () => {
 
   const salesData = sales?.map((item) => ({
     date: item.createds,
-    sales: item.price_total,
+    sales: Number(item.price_total),
   }));
 
   const purchasesData = purchases?.map((item) => ({
     date: item.createds,
-    purchases: item.price_total,
+    purchases: Number(item.price_total),
   }));
 
   return (
