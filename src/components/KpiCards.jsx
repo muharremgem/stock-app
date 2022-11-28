@@ -5,9 +5,14 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import { amber, indigo, pink } from "@mui/material/colors";
-import { flex, flexCenter } from "../styles/globalStyle";
+import { flex } from "../styles/globalStyle";
+import { useSelector } from "react-redux";
 
 const KpiCards = () => {
+  const { sales, purchases } = useSelector((state) => state.stock);
+
+
+  
   const data = [
     {
       title: "Sales",
