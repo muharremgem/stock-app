@@ -24,7 +24,7 @@ const Products = () => {
     getBrands,
     getCategories,
     getProducts,
-    deleteProduct,
+    deleteProducts,
     getProCatBrands,
   } = useStockCalls();
   const { products, brands } = useSelector((state) => state.stock);
@@ -202,7 +202,7 @@ const Products = () => {
                     <TableCell align="center">{product.stock}</TableCell>
                     <TableCell
                       align="center"
-                      onClick={() => deleteProduct(product.id)}
+                      onClick={() => deleteProducts(product.id)}
                     >
                       <DeleteIcon sx={btnHoverStyle} />
                     </TableCell>

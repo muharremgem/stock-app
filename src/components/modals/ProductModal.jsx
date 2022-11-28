@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { MenuItem, Select, InputLabel, FormControl } from "@mui/material";
 
 export default function ProductModal({ open, setOpen, info, setInfo }) {
-  const { postProduct, putProduct } = useStockCalls();
+  const { postProducts, putProducts } = useStockCalls();
   const { categories, brands } = useSelector((state) => state.stock);
 
   const handleChange = (e) => {
@@ -21,9 +21,9 @@ export default function ProductModal({ open, setOpen, info, setInfo }) {
     e.preventDefault();
     setOpen(false);
     if (info.id) {
-      putProduct(info);
+      putProducts(info);
     } else {
-      postProduct(info);
+      postProducts(info);
     }
     setInfo({});
   };
