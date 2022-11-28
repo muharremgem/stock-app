@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { arrowStyle, btnHoverStyle, flexCenter } from "../styles/globalStyle";
 import useSortColumn from "../hooks/useSortColumn";
 import { MultiSelectBox, MultiSelectBoxItem } from "@tremor/react";
+import ProductModal from "../components/modals/ProductModal";
 
 const Products = () => {
   const {
@@ -136,8 +137,12 @@ const Products = () => {
         </MultiSelectBox>
       </Box>
 
-      {/*
-      <ProductModal open={open} setOpen={setOpen} info={info} setInfo={setInfo} /> */}
+      <ProductModal
+        open={open}
+        setOpen={setOpen}
+        info={info}
+        setInfo={setInfo}
+      />
 
       {sortedData?.length > 0 && (
         <TableContainer component={Paper} sx={{ mt: 3 }} elevation={10}>
