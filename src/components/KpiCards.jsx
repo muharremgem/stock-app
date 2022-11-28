@@ -5,6 +5,7 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import { amber, indigo, pink } from "@mui/material/colors";
+import { flex, flexCenter } from "../styles/globalStyle";
 
 const KpiCards = () => {
   const data = [
@@ -13,21 +14,21 @@ const KpiCards = () => {
       metric: "$0",
       icon: <MonetizationOnIcon />,
       color: indigo[900],
-      bgColor: indigo[300],
+      bgColor: indigo[200],
     },
     {
       title: "Profit",
       metric: "$0",
       icon: <PaymentsIcon />,
       color: pink[900],
-      bgColor: pink[300],
+      bgColor: pink[200],
     },
     {
       title: "Purchases",
       metric: "$0",
       icon: <ShoppingCartIcon />,
       color: amber[900],
-      bgColor: amber[300],
+      bgColor: amber[200],
     },
   ];
   return (
@@ -35,13 +36,20 @@ const KpiCards = () => {
       {data.map((item) => (
         <Grid item key={item.title} xs={12} sm={6} md={4}>
           <Paper sx={{ p: 2 }} elevation={10}>
-            <Box>
-              <Avatar sx={{ width: "4rem", height: "4rem" }}>
+            <Box sx={flex}>
+              <Avatar
+                sx={{
+                  width: "4rem",
+                  height: "4rem",
+                  color: item.color,
+                  backgroundColor: item.bgColor,
+                }}
+              >
                 {item.icon}
               </Avatar>
               <Box>
-                <Typography>{item.title}</Typography>
-                <Typography>{item.metric}</Typography>
+                <Typography variant="button">{item.title}</Typography>
+                <Typography variant="h5">{item.metric}</Typography>
               </Box>
             </Box>
           </Paper>
