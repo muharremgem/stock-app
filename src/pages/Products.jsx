@@ -13,7 +13,6 @@ import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
-
 import { useSelector } from "react-redux";
 import { arrowStyle, btnHoverStyle, flexCenter } from "../styles/globalStyle";
 import useSortColumn from "../hooks/useSortColumn";
