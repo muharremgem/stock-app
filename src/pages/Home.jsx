@@ -1,3 +1,4 @@
+import { Box, Typography } from "@mui/material";
 import { useEffect } from "react";
 import useStockCalls from "../hooks/useStockCalls";
 
@@ -8,7 +9,13 @@ const Home = () => {
     getSales();
   }, []);
 
-  return <div>Home</div>;
+  return (
+    <Box>
+      <Typography variant="h4" color="error" mb={4}>
+        Dashboard
+      </Typography>
+    </Box>
+  );
 };
 
 export default Home;
