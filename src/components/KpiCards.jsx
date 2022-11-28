@@ -5,32 +5,40 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import { amber, indigo, pink } from "@mui/material/colors";
-import { flex } from "../styles/globalStyle";
 import { useSelector } from "react-redux";
 
 const KpiCards = () => {
   const { sales, purchases } = useSelector((state) => state.stock);
 
-  //const totalSales = sales?.
+  const totalSales = sales
+    ?.map((sale) => Number(sale.price_total))
+    .reduce((acc, val) => acc + val, 0);
+  console.log(totalSales);
+
+  const totalPurchases = purchases
+    ?.map((purchase) => Number(purchase.price_total))
+    .reduce((acc, val) => acc + val, 0);
+
+  const totalProfit = totalSales - totalPurchases;
 
   const data = [
     {
       title: "Sales",
-      metric: "$0",
+      metric: `$${totalSales || 0}`,
       icon: <MonetizationOnIcon sx={{ fontSize: "3rem" }} />,
       color: indigo[900],
       bgColor: indigo[200],
     },
     {
       title: "Profit",
-      metric: "$0",
+      metric: `$${totalProfit || 0}`,
       icon: <PaymentsIcon sx={{ fontSize: "3rem" }} />,
       color: pink[900],
       bgColor: pink[200],
     },
     {
       title: "Purchases",
-      metric: "$0",
+      metric: `$${totalPurchases || 0}`,
       icon: <ShoppingCartIcon sx={{ fontSize: "3rem" }} />,
       color: amber[900],
       bgColor: amber[200],
