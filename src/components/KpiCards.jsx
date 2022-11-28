@@ -10,21 +10,26 @@ import { useSelector } from "react-redux";
 const KpiCards = () => {
   const { sales, purchases } = useSelector((state) => state.stock);
 
-  const totalSales = sales
-    ?.map((sale) => Number(sale.price_total))
-    .reduce((acc, val) => acc + val, 0);
-  console.log(totalSales);
+  //   const totalSales = sales
+  //     ?.map((sale) => Number(sale.price_total))
+  //     .reduce((acc, val) => acc + val, 0);
+  //   console.log(totalSales);
 
-  const totalPurchases = purchases
-    ?.map((purchase) => Number(purchase.price_total))
-    .reduce((acc, val) => acc + val, 0);
+  //   const totalPurchases = purchases
+  //     ?.map((purchase) => Number(purchase.price_total))
+  //     .reduce((acc, val) => acc + val, 0);
 
-  const totalProfit = totalSales - totalPurchases;
+  const total = (data) =>
+    data
+      ?.map((item) => Number(item.price_total))
+      .reduce((acc, val) => acc + val, 0);
+
+  const totalProfit = total(sales) - total(purchases);
 
   const data = [
     {
       title: "Sales",
-      metric: `$${totalSales || 0}`,
+      metric: `$${total(sales) || 0}`,
       icon: <MonetizationOnIcon sx={{ fontSize: "3rem" }} />,
       color: indigo[900],
       bgColor: indigo[200],
@@ -38,7 +43,7 @@ const KpiCards = () => {
     },
     {
       title: "Purchases",
-      metric: `$${totalPurchases || 0}`,
+      metric: `$${total(purchases) || 0}`,
       icon: <ShoppingCartIcon sx={{ fontSize: "3rem" }} />,
       color: amber[900],
       bgColor: amber[200],
