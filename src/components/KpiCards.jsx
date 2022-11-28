@@ -23,7 +23,7 @@ const KpiCards = () => {
       bgColor: pink[300],
     },
     {
-      title: "Purchase",
+      title: "Purchases",
       metric: "$0",
       icon: <ShoppingCartIcon />,
       color: amber[900],
@@ -31,15 +31,17 @@ const KpiCards = () => {
     },
   ];
   return (
-    <Grid container>
+    <Grid container justifyContent="center" alignItems="center" spacing={2}>
       {data.map((item) => (
-        <Grid item>
-          <Paper>
+        <Grid item key={item.title} xs={12} sm={6} md={4}>
+          <Paper sx={{ p: 2 }} elevation={10}>
             <Box>
-              <Avatar></Avatar>
+              <Avatar sx={{ width: "4rem", height: "4rem" }}>
+                {item.icon}
+              </Avatar>
               <Box>
-                <Typography></Typography>
-                <Typography></Typography>
+                <Typography>{item.title}</Typography>
+                <Typography>{item.metric}</Typography>
               </Box>
             </Box>
           </Paper>
