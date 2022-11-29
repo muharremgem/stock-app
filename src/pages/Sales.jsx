@@ -1,13 +1,5 @@
 const Sales = () => {
-  return <div>import React from 'react'
-  
-  const Sales = () => {
-    return (
-      <div>Sales</div>
-    )
-  }
-  
-  export default Sales</div>;
+  return <div>sales</div>;
 };
 
 export default Sales;
