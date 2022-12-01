@@ -34,6 +34,7 @@ export default function FirmCard({ firm, setOpen, setInfo }) {
         component="img"
         alt="green iguana"
       />
+
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           Phone: {firm?.phone}
@@ -47,6 +48,7 @@ export default function FirmCard({ firm, setOpen, setInfo }) {
             setInfo(firm);
           }}
         />
+
         <DeleteOutlineIcon
           sx={btnHoverStyle}
           onClick={() => deleteFirm(firm?.id)}
