@@ -34,7 +34,6 @@ const stockSlice = createSlice({
     },
   },
 });
-
 export const {
   fetchStart,
   loginSuccess,
