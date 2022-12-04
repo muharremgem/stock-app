@@ -17,5 +17,4 @@ const useAxios = () => {
 
   return { axiosWithToken };
 };
-
 export default useAxios;
