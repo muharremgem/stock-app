@@ -10,7 +10,6 @@ const Home = () => {
     getSales();
     getPurchases();
   }, []);
-
   return (
     <Box>
       <Typography variant="h4" color="error" mb={4}>
