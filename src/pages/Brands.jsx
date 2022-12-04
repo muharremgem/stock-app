@@ -38,7 +38,6 @@ const Brands = () => {
   useEffect(() => {
     getBrands();
   }, []);
-
   return (
     <Box>
       <Typography variant="h4" color="error" mb={4}>
