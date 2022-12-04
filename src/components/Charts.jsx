@@ -33,6 +33,7 @@ const Charts = () => {
           />
         </Card>
       </Grid>
+
       <Grid item xs={12} sm={12} md={6}>
         <Card sx={{ p: 2 }}>
           <Typography>Daily Purchases (USD)</Typography>
