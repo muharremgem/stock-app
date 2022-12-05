@@ -1,5 +1,9 @@
 const Purchases = () => {
-  return <div>Purchases</div>;
+  return (
+    <div>
+      <div>Purchases</div>
+    </div>
+  );
 };
 
 export default Purchases;
