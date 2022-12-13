@@ -1,147 +1,74 @@
-import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import UpgradeIcon from "@mui/icons-material/Upgrade";
-import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-
-import useSortColumn from "../../hooks/useSortColumn";
-import { arrowStyle, btnHoverStyle, flex } from "../../styles/globalStyle";
-import useStockCalls from "../../hooks/useStockCalls";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Typography } from "@mui/material";
+import useStockCalls from "../hooks/useStockCalls";
+import MultiSelect from "../components/MultiSelect";
+import PurchaseModal from "../components/modals/PurchaseModal";
+import PurchaseTable from "../components/tables/PurchasesTable";
 
-const SalesTable = ({ setOpen, setInfo, selectedProducts, selectedBrands }) => {
-  const { deleteSale } = useStockCalls();
-  const { sales } = useSelector((state) => state.stock);
+const Purchases = () => {
+  const { purchases } = useSelector((state) => state.stock);
+  // const { getProCatBrands, getPurchases, getFirms } = useStockCalls();
+  const { getAllStockData } = useStockCalls();
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
 
-  const columnObj = {
-    created: 1,
-    quantity: 1,
-    price_total: 1,
-    price: 1,
-    product: 1,
-    brand: 1,
-  };
+  const [open, setOpen] = useState(false);
+  const [info, setInfo] = useState({});
 
-  const { sortedData, handleSort, columns } = useSortColumn(sales, columnObj);
-
-  const isBrandSelected = (item) =>
-    selectedBrands.includes(item.brand) || selectedBrands.length === 0;
-
-  const isProductSelected = (item) =>
-    selectedProducts.includes(item.product) || selectedProducts.length === 0;
+  useEffect(() => {
+    // getPurchases();
+    // getFirms();
+    // getProCatBrands();
+    getAllStockData();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <TableContainer component={Paper} elevation={10} sx={{ mt: 4 }}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>
-              <Box sx={arrowStyle} onClick={() => handleSort("created")}>
-                <Typography variant="body" noWrap>
-                  Date
-                </Typography>
-                {columns.created === 1 && <UpgradeIcon />}
-                {columns.created !== 1 && <VerticalAlignBottomIcon />}
-              </Box>
-            </TableCell>
-            <TableCell align="center">Category</TableCell>
-            <TableCell align="center">
-              <Box sx={arrowStyle} onClick={() => handleSort("brand")}>
-                <Typography variant="body" noWrap>
-                  Brand
-                </Typography>
-                {columns.brand === 1 && <UpgradeIcon />}
-                {columns.brand !== 1 && <VerticalAlignBottomIcon />}
-              </Box>
-            </TableCell>
-            <TableCell align="center">
-              <Box sx={arrowStyle} onClick={() => handleSort("product")}>
-                <Typography variant="body" noWrap>
-                  Product
-                </Typography>
-                {columns.product === 1 && <UpgradeIcon />}
-                {columns.product !== 1 && <VerticalAlignBottomIcon />}
-              </Box>
-            </TableCell>
-            <TableCell>
-              <Box sx={arrowStyle} onClick={() => handleSort("quantity")}>
-                <Typography variant="body" noWrap>
-                  Quantity
-                </Typography>
-                {columns.quantity === 1 && <UpgradeIcon />}
-                {columns.quantity !== 1 && <VerticalAlignBottomIcon />}
-              </Box>
-            </TableCell>
+    <>
+      <PurchaseModal
+        info={info}
+        setInfo={setInfo}
+        open={open}
+        setOpen={setOpen}
+      />
 
-            <TableCell align="center">
-              <Box sx={arrowStyle} onClick={() => handleSort("price")}>
-                <Typography variant="body" noWrap>
-                  Price
-                </Typography>
-                {columns.price === 1 && <UpgradeIcon />}
-                {columns.price !== 1 && <VerticalAlignBottomIcon />}
-              </Box>
-            </TableCell>
-            <TableCell>
-              <Box sx={arrowStyle} onClick={() => handleSort("price_total")}>
-                <Typography variant="body" noWrap>
-                  Amount
-                </Typography>
-                {columns.amount === 1 && <UpgradeIcon />}
-                {columns.amount !== 1 && <VerticalAlignBottomIcon />}
-              </Box>
-            </TableCell>
-            <TableCell align="center">Operation</TableCell>
-          </TableRow>
-        </TableHead>
+      <Typography variant="h4" color="error" mt={4} mb={4}>
+        Purchases
+      </Typography>
 
-        <TableBody>
-          {sortedData
-            ?.filter((item) => isBrandSelected(item))
-            .filter((item) => isProductSelected(item))
-            .map((item) => (
-              <TableRow
-                key={item.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell align="center">{item.createds}</TableCell>
-                <TableCell align="center">{item.category[0].name}</TableCell>
-                <TableCell align="center">{item.brand}</TableCell>
-                <TableCell align="center">{item.product}</TableCell>
-                <TableCell align="center">{item.quantity}</TableCell>
-                <TableCell align="center">{`$${item.price}`}</TableCell>
-                <TableCell align="center">{`$${item.price_total}`}</TableCell>
-                <TableCell>
-                  <Box sx={flex}>
-                    <BorderColorIcon
-                      sx={btnHoverStyle}
-                      onClick={() => {
-                        setOpen(true);
-                        setInfo(item);
-                      }}
-                    />
+      <Button
+        variant="contained"
+        onClick={() => {
+          setInfo({});
+          setOpen(true);
+        }}
+      >
+        New Purchase
+      </Button>
 
-                    <DeleteForeverIcon
-                      onClick={() => deleteSale(item.id)}
-                      sx={btnHoverStyle}
-                    />
-                  </Box>
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+      {purchases?.length > 0 && (
+        <>
+          <MultiSelect
+            data1={purchases}
+            data2={purchases}
+            key1="brand"
+            key2="product"
+            firstNames={selectedBrands}
+            setFirstNames={setSelectedBrands}
+            setSecondNames={setSelectedProducts}
+          />
+
+          <PurchaseTable
+            setOpen={setOpen}
+            setInfo={setInfo}
+            selectedProducts={selectedProducts}
+            selectedBrands={selectedBrands}
+          />
+        </>
+      )}
+    </>
   );
 };
 
-export default SalesTable;
+export default Purchases;
