@@ -25,7 +25,7 @@ Project aims to create a E comerse stock app with React.
 
 ## Screenshot
 <p align="center">
-<a href="https://stock-app-us.vercel.app/"><img src="stockapp.gif" alt="gif"></a>
+<a href="https://stock-app-muharremgem.vercel.app/"><img src="stockapp.gif" alt="gif"></a>
 </p>
 
 
