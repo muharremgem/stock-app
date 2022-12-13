@@ -34,7 +34,6 @@ export default function BrandsCard({ brand, setOpen, setInfo }) {
         component="img"
         alt="green iguana"
       />
-
       <CardActions sx={flexColumn}>
         <EditIcon
           sx={btnHoverStyle}
